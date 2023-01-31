@@ -8,9 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.bootcamp.training.assignment2.model.Employee;
-import com.bootcamp.training.assignment2.model.Job;
 import com.bootcamp.training.assignment2.repository.EmployeeRepository;
-import com.bootcamp.training.assignment2.repository.JobRepository;
 @Service
 @Transactional
 public class EmployeeService {

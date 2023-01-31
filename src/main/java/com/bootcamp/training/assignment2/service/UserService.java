@@ -1,40 +1,35 @@
-//package com.bootcamp.training.assignment2.service;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.web.bind.annotation.RequestBody;
-//
-//
-//import com.bootcamp.training.assignment2.model.User;
-//
-//@Service
-//public class UserService {
-//
-//    /**
-//     * Service for save Course
-//     */
-//	@Autowired
-//	UserPostDTO userPostDTO;
-//	public long saveUser(@RequestBody User user)   
-//	{  
-//	userPostDTO.save(user);  
-//	return user.getId();  
-//	}
-//
-//	
-//
-////    public ResponseEntity<String> saveUser(UserPostDTO post) {
-////
-////        return null;
-////    }
-////
-////    /** Service to get List of Course
-////     *
-////     */
-////    public ResponseEntity<String> getUsers() {
-////
-////       return null;
-////
-////    }
-//
-//}
+package com.bootcamp.training.assignment2.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.bootcamp.training.assignment2.model.User;
+import com.bootcamp.training.assignment2.repository.UserRepository;
+
+@Service
+public class UserService {
+	private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    public Optional<User> findById(String id) {
+        return userRepository.findById(id);
+    }
+
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+    
+
+    public void deleteById(String id) {
+        userRepository.deleteById(id);
+    }
+}
