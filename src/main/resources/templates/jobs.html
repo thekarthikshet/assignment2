@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Jobs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ddd;
+        }
+
+        a {
+            color: #4CAF50;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jobs</h1>
+    <table>
+        <tr><th>ID</th>
+            <th>Title</th>
+            <th>Salary</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="job : ${jobs}">
+        <td th:text= "${job.id}"></td>
+            <td th:text="${job.title}"></td>
+            <td th:text="${job.salary}"></td>
+            <td>
+                
+                <a th:href="@{/deleteJob/{id}(id=${job.id})}" class="btn">Delete</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/addJob">Add Job</a>
+</body>
+</html>
