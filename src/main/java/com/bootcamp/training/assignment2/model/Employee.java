@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -57,7 +56,7 @@ public class Employee {
 }
 class UUIDGeneratorEmp implements IdentifierGenerator {
 private static final AtomicLong counter = new AtomicLong(1);
-
+ 
 @Override
 public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
 return "CUST00" + counter.getAndIncrement();

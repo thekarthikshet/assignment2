@@ -3,7 +3,7 @@ package com.bootcamp.training.assignment2.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Entity
 public class User {
 
@@ -51,7 +51,8 @@ public class User {
 
 
 	public void setPassword(String password) {
-		this.password = password;
+	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	    this.password = passwordEncoder.encode(password);
 	}
 
 
