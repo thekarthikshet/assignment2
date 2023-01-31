@@ -25,7 +25,7 @@ import lombok.Setter;
 @Entity
 public class Employee {
 
-	 @Id
+	  @Id
 	  @GeneratedValue(generator = "system-uuid")
 	  @GenericGenerator(name = "system-uuid", strategy = "com.bootcamp.training.assignment2.model.UUIDGeneratorEmp")
 	  @Type(type = "string")
@@ -59,6 +59,6 @@ private static final AtomicLong counter = new AtomicLong(1);
  
 @Override
 public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-return "CUST00" + counter.getAndIncrement();
+return "EMP00" + counter.getAndIncrement();
 }
 }
