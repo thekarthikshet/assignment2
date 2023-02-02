@@ -5,26 +5,26 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.bootcamp.training.assignment2.model.User;
+import com.bootcamp.training.assignment2.model.User_s;
 import com.bootcamp.training.assignment2.repository.UserRepository;
 
 @Service
-public class UserService {
+public class User_sService {
 	private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    public User_sService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public List<User> findAll() {
+    public List<User_s> findAll() {
         return userRepository.findAll();
     }
 
-    public Optional<User> findById(String id) {
+    public Optional<User_s> findById(String id) {
         return userRepository.findById(id);
     }
 
-    public User save(User user) {
+    public User_s save(User_s user) {
         return userRepository.save(user);
     }
     

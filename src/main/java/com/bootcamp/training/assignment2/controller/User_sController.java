@@ -11,41 +11,41 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bootcamp.training.assignment2.model.User;
-import com.bootcamp.training.assignment2.service.UserService;
+import com.bootcamp.training.assignment2.model.User_s;
+import com.bootcamp.training.assignment2.service.User_sService;
 
 @RestController
-public class UserController {
+public class User_sController {
 
-    private final UserService userService;
+    private final User_sService user_sService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public User_sController(User_sService user_sService) {
+        this.user_sService = user_sService;
     }
 
     @GetMapping("/users")
-    public List<User> findAll() {
-        return userService.findAll();
+    public List<User_s> findAll() {
+        return user_sService.findAll();
     }
 
     @GetMapping("/users/{id}")
-    public Optional<User> findById(@PathVariable String id) {
-        return userService.findById(id);
+    public Optional<User_s> findById(@PathVariable String id) {
+        return user_sService.findById(id);
     }
 
     @PostMapping("/users")
-    public User save(@RequestBody User user) {
-        return userService.save(user);
+    public User_s save(@RequestBody User_s user) {
+        return user_sService.save(user);
     }
 
     @PutMapping("/users/{id}")
-    public User update(@PathVariable String id, @RequestBody User user) {
+    public User_s update(@PathVariable String id, @RequestBody User_s user) {
         user.setId(id);
-        return userService.save(user);
+        return user_sService.save(user);
     }
 
     @DeleteMapping("/users/{id}")
     public void deleteById(@PathVariable String id) {
-        userService.deleteById(id);
+        user_sService.deleteById(id);
     }
 }

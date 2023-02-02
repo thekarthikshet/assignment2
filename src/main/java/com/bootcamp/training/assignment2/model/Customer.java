@@ -27,6 +27,7 @@ public class Customer {
     private String id;
     private String name;
     private String address;
+    @Column(unique=true)
     private long phone;
 
     public Customer(String customerId, String name, String address, long phone) {
