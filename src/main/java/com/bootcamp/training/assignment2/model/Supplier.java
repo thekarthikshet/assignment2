@@ -1,6 +1,8 @@
 package com.bootcamp.training.assignment2.model;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,11 @@ import javax.persistence.ManyToMany;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.HibernateException;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.id.IdentifierGenerator;
 
 @Setter
 @Getter
@@ -17,8 +24,10 @@ import lombok.Setter;
 public class Supplier {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "com.bootcamp.training.assignment2.model.UUIDGeneratorSupplier")
+    @Type(type = "string")
+    private String id;
 
     private String companyName;
 
@@ -29,7 +38,7 @@ public class Supplier {
     @ManyToMany(mappedBy="suppliers")
     private List<Product> products;
 
-    public Supplier(long id, String companyName, String address, long phoneNumber, List<Product> products) {
+    public Supplier(String id, String companyName, String address, long phoneNumber, List<Product> products) {
         this.id = id;
         this.companyName = companyName;
         this.address = address;
@@ -39,4 +48,19 @@ public class Supplier {
 
     public Supplier() {
     }
+
 }
+
+//The AtomicLong class provides a thread-safe way to increment a long value,
+//which is used to generate unique identifier values in the generate method.
+
+class UUIDGeneratorSupplier implements IdentifierGenerator {
+    private static final AtomicLong counter = new AtomicLong(1);
+
+    @Override
+    public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
+        return "SUP00" + counter.getAndIncrement();
+    }
+}
+
+
