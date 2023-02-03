@@ -4,16 +4,17 @@
     <title>Sale Form</title>
 </head>
 <body>
-    <h1>Sale Form</h1>
-    <form th:action="@{/sale}" th:object="${sale}" method="post">
+    <h1>Sales Form</h1>
+    <form th:action="@{/sales}" th:object="${sale}" method="post">
   <input type="hidden" th:field="*{identity.saleId}"/>
   <div>
     <label>Product:</label>
     <select th:field="*{identity.product}">
       <option th:each="product : ${products}"
-              th:value="${product}"
-              th:text="${product.productName}"/>
+              th:value="${product.id}"
+              th:text="${product.id}"/>
     </select>
+    <input type="number" th:field="*{identity.product}"/>
   </div>
   <div>
     <label>Quantity:</label>

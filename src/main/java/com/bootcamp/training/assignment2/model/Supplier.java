@@ -6,17 +6,17 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.HibernateException;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.IdentifierGenerator;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Setter
 @Getter
