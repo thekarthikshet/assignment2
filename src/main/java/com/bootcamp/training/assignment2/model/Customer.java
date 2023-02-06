@@ -2,6 +2,7 @@ package com.bootcamp.training.assignment2.model;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.persistence.*;
@@ -46,6 +47,6 @@ private static final AtomicLong counter = new AtomicLong(1);
 
 @Override
 public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-return "CUST00" + counter.getAndIncrement();
+return "CUST00" + counter.getAndIncrement()+"_" + new Date().getTime();
 }
 }

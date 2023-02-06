@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.bootcamp.training.assignment2.model.Sale;
 
 @Repository
-public interface SaleRepository extends JpaRepository<Sale, Long> {
+public interface SaleRepository extends JpaRepository<Sale, String> {
 
 }
