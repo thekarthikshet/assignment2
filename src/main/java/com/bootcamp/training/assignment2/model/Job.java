@@ -1,6 +1,7 @@
 package com.bootcamp.training.assignment2.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.CascadeType;
@@ -61,7 +62,7 @@ class UUIDGeneratorJob implements IdentifierGenerator {
 
 	@Override
 	public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-		return "JOB00" + counter.getAndIncrement();
+		return "JOB00" + counter.getAndIncrement()+"_" + new Date().getTime();
 	}
 }
 
